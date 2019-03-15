@@ -1,0 +1,12 @@
+To: Bob
+
+This is Alice.
+Hello.
+Thanks.
+On Mon, 21 Jan 2019 20:57:30 +0900
+Bob <bob@example.com> wrote:
+
+To: Alice.
+
+This is Bob.
+Thanks.

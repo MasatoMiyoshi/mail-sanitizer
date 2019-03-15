@@ -1,0 +1,9 @@
+To: Bob
+
+This is Alice.
+Following place:
+-----
+Place: Alice Company
+Date: XXXX/XX/XX
+-----
+Thanks.

@@ -1,0 +1,13 @@
+To: Alice
+
+This is Bob.
+Thanks.
+
+> To Bob
+> This is Alice.
+> Thanks.
+
+==========
+Email: bob@example.com
+TEL: xxx-xxxx-xxxx
+==========

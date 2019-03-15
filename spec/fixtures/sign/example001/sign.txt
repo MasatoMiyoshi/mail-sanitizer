@@ -1,0 +1,12 @@
+----------------------------------------
+Bob
+Email: bob@example.com
+Tel: xxx-xxxx-xxxx
+
+Company Inc.
+http://bob.example.com/
+info@bob.example.com
+
+Place
+tel xxx-xxx-xxxx fax xxx-xxx-xxxx
+----------------------------------------

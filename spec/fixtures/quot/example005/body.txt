@@ -1,0 +1,12 @@
+To: Bob
+
+This is Alice.
+Thanks.
+From: Bob <bob@example.com>
+Sent: Wednesday, January 9, 2019 11:59 AM
+To: alice@example.com
+Subject: Test mail
+
+To: Alice
+
+This is Bob.

@@ -1,0 +1,9 @@
+To: Bob
+
+This is Alice.
+Welcome.
+*----------
+* Alice Company
+* Tel: xxx-xxxx-xxxx
+* Email: alice@example.com
+*----------

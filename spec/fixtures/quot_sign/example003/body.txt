@@ -1,0 +1,17 @@
+To: Alice
+
+This is Bob.
+
+> Hello
+> Thanks.
+
+Hello. Thanks.
+
+--
+Tel: xxx-xxxx-xxxx
+Email: bob@example.com
+
+On 2019 Alice wrote:
+
+> Hello
+> Tnanks.

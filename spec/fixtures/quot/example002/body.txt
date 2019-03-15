@@ -1,0 +1,10 @@
+To: Bob
+
+This is Alice.
+Thanks.
+
+----- Original Message -----
+To: Alice
+
+Hello.
+This is Bob.
