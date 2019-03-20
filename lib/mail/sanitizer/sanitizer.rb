@@ -86,19 +86,24 @@ module Mail
         end
 
         lines.each_with_index do |line, i|
-          keywords = { 'from:' => false, 'sent:' => false, 'to:' => false, 'subject:' => false }
-          sidx = 0
-          keywords.keys.each do |key|
-            while (i + sidx) < numrow do
-              downcased_line = downcase(lines[i + sidx])
-              unless downcased_line.empty?
-                keywords[key] = true if downcased_line =~ /^#{key}/
+          keywords = {}
+          Mail::Sanitizer::Constant::QUOT_KEYWORD_SET.each do |set|
+            keywords.clear
+            sidx = 0
+            set.each do |key|
+              keywords[key] = false
+              while (i + sidx) < numrow do
+                downcased_line = downcase(lines[i + sidx])
+                unless downcased_line.empty?
+                  keywords[key] = true if downcased_line =~ /^#{key}/
+                  sidx += 1
+                  break
+                end
                 sidx += 1
-                break
               end
-              sidx += 1
+              break unless keywords[key]
             end
-            break if keywords[key] == false
+            break if keywords.values.all?
           end
 
           if keywords.values.all? || downcase(line) =~ Mail::Sanitizer::Constant::QUOT_PATTERN ||
