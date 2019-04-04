@@ -20,6 +20,8 @@ module Mail
       private
 
       def delete_quot_sign(str)
+        return nil, nil, nil if str.nil?
+
         lines = split_line(str.strip)
         quot_lines = []
         sign_lines = []
