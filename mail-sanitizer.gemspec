@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{A simple sanitizer for mail bodies}
   spec.description   = %q{A simple sanitizer for mail bodies}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/MasatoMiyoshi/mail-sanitizer"
   spec.license       = "MIT"
 
   spec.files         = Dir.chdir(File.expand_path('..', __FILE__)) do
@@ -20,6 +20,8 @@ Gem::Specification.new do |spec|
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
+
+  spec.required_ruby_version = '>= 2.3'
 
   spec.add_development_dependency "bundler"
   spec.add_development_dependency "rake"
