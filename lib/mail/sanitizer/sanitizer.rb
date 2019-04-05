@@ -52,10 +52,15 @@ module Mail
       end
 
       def include_datetime?(str)
+        str = Mail::Sanitizer::String.replace_jp_datetime(str)
         DateTime.parse(str)
         true
       rescue
         false
+      end
+
+      def include_email_address?(str)
+        Mail::Sanitizer::String.include_email_address?(str)
       end
 
       def split_block(str)
@@ -108,8 +113,10 @@ module Mail
             break if keywords.values.all?
           end
 
-          if keywords.values.all? || downcase(line) =~ Mail::Sanitizer::Constant::QUOT_PATTERN ||
-             (downcase(line) =~ Mail::Sanitizer::Constant::QUOT_DATETIME_PATTERN && include_datetime?(line))
+          downcased_line = downcase(line)
+          if keywords.values.all? || downcased_line =~ Mail::Sanitizer::Constant::QUOT_PATTERN ||
+             (downcased_line =~ Mail::Sanitizer::Constant::QUOT_DATETIME_PATTERN && include_datetime?(line)) ||
+             (include_datetime?(line) && include_email_address?(line))
             line_types[i, numrow - i] = Array.new(numrow - i, :quot) unless line_types[i] == :quot
             break
           end
