@@ -16,6 +16,22 @@ module Mail
       ]
 
       class << self
+        def split_line(str)
+          str.split(/[\r\n]/)
+        end
+
+        def downcase(str)
+          str.downcase.gsub(/[[:space:]]/, '')
+        end
+
+        def include_datetime?(str)
+          str = replace_jp_datetime(str)
+          DateTime.parse(str)
+          true
+        rescue
+          false
+        end
+
         def include_email_address?(str)
           texts = str.split(/#{SP}/)
           texts.each do |text|

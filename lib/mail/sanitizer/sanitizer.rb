@@ -22,7 +22,7 @@ module Mail
       def delete_quot_sign(str)
         return nil, nil, nil if str.nil?
 
-        lines = split_line(str.strip)
+        lines = Mail::Sanitizer::String.split_line(str.strip)
         quot_lines = []
         sign_lines = []
 
@@ -43,28 +43,8 @@ module Mail
         return lines.join("\n").strip, quot_lines.join("\n").strip, sign_lines.join("\n").strip
       end
 
-      def split_line(str)
-        str.split(/[\r\n]/)
-      end
-
-      def downcase(str)
-        str.downcase.gsub(/[[:space:]]/, '')
-      end
-
-      def include_datetime?(str)
-        str = Mail::Sanitizer::String.replace_jp_datetime(str)
-        DateTime.parse(str)
-        true
-      rescue
-        false
-      end
-
-      def include_email_address?(str)
-        Mail::Sanitizer::String.include_email_address?(str)
-      end
-
       def split_block(str)
-        lines = split_line(str)
+        lines = Mail::Sanitizer::String.split_line(str)
         numrow = lines.size
 
         line_types = Array.new(numrow, :normal)
@@ -100,7 +80,7 @@ module Mail
             set.each do |key|
               keywords[key] = false
               while (i + sidx) < numrow do
-                downcased_line = downcase(lines[i + sidx])
+                downcased_line = Mail::Sanitizer::String.downcase(lines[i + sidx])
                 unless downcased_line.empty?
                   keywords[key] = true if downcased_line =~ /^#{key}/
                   sidx += 1
@@ -113,10 +93,10 @@ module Mail
             break if keywords.values.all?
           end
 
-          downcased_line = downcase(line)
+          downcased_line = Mail::Sanitizer::String.downcase(line)
           if keywords.values.all? || downcased_line =~ Mail::Sanitizer::Constant::QUOT_PATTERN ||
-             (downcased_line =~ Mail::Sanitizer::Constant::QUOT_DATETIME_PATTERN && include_datetime?(line)) ||
-             (include_datetime?(line) && include_email_address?(line))
+             (downcased_line =~ Mail::Sanitizer::Constant::QUOT_DATETIME_PATTERN && Mail::Sanitizer::String.include_datetime?(line)) ||
+             (Mail::Sanitizer::String.include_datetime?(line) && Mail::Sanitizer::String.include_email_address?(line))
             line_types[i, numrow - i] = Array.new(numrow - i, :quot) unless line_types[i] == :quot
             break
           end
