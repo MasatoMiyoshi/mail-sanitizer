@@ -1,0 +1,5 @@
+Forwarded by Alice:
+> To: Alice
+>
+> This is Bob.
+> Hello.

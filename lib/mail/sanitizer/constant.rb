@@ -2,7 +2,7 @@ module Mail
   module Sanitizer
     class Constant
       QUOT_SYMBOL_PATTERN = /^>/
-      QUOT_PATTERN = /wrote:|-originalmessage-|-forwardedmessage-/
+      QUOT_PATTERN = /wrote:|-originalmessage-|-forwardedmessage-|forwardedby/
       QUOT_DATETIME_PATTERN = /^(on|at)/
       QUOT_KEYWORD_SET = [
         ['from:', 'sent:', 'to:', 'subject:'],
