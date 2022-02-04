@@ -7,6 +7,7 @@ module Mail
 
       def initialize(body)
         @src = body.dup
+        @src = @src.encode('utf-8', invalid: :replace, undef: :replace) unless @src.nil?
         @sanitized_body = nil
         @quot = nil
         @sign = nil
