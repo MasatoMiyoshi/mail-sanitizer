@@ -13,6 +13,14 @@ RSpec.describe Mail::Sanitizer do
     end
   end
 
+  describe 'remove_email_address' do
+    it 'removes email address' do
+      str = 'From (aaa@example.com) Alice wrote:'
+      res = Mail::Sanitizer::String.remove_email_address(str)
+      expect(res).to eq('From () Alice wrote:')
+    end
+  end
+
   describe 'replace_jp_datetime' do
     it 'replaces japanese date notation' do
       str = '2019年4月5日'

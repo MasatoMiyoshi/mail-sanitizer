@@ -19,7 +19,7 @@ RSpec.describe Mail::Sanitizer do
   describe 'sanitize' do
     context 'when bodies include quoations' do
       let(:fixture_dir) { 'spec/fixtures/quot' }
-      it_behaves_like 'sanitizing bodies', 11
+      it_behaves_like 'sanitizing bodies', 12
     end
 
     context 'when bodies include signatures' do
