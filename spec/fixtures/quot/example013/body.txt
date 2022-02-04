@@ -1,0 +1,10 @@
+To: Alice
+
+This is Bob.
+Thanks.
+
+Begin forwarded message:
+To: Bob
+
+Hello.
+This is Alice.
