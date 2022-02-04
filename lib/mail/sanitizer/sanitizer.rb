@@ -96,10 +96,9 @@ module Mail
             break if keywords.values.all?
           end
 
-          downcased_line = Mail::Sanitizer::String.downcase(line)
-          if keywords.values.all? || downcased_line =~ Mail::Sanitizer::Constant::QUOT_PATTERN ||
-             (downcased_line =~ Mail::Sanitizer::Constant::QUOT_DATETIME_PATTERN && Mail::Sanitizer::String.include_datetime?(line)) ||
-             (Mail::Sanitizer::String.include_email_address?(line) && Mail::Sanitizer::String.include_datetime?(Mail::Sanitizer::String.remove_email_address(line)))
+          if keywords.values.all? ||
+             Mail::Sanitizer::String.quot_pattern?(line) ||
+             Mail::Sanitizer::String.include_datetime_and_email_address?(line)
             line_types[i, numrow - i] = Array.new(numrow - i, :quot) unless line_types[i] == :quot
             break
           end

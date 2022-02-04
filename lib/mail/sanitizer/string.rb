@@ -24,6 +24,17 @@ module Mail
           str.downcase.gsub(/[[:space:]]/, '')
         end
 
+        def quot_pattern?(str)
+          s = downcase(str)
+          (s =~ Mail::Sanitizer::Constant::QUOT_PATTERN) ||
+          (s =~ Mail::Sanitizer::Constant::QUOT_DATETIME_PATTERN && Mail::Sanitizer::String.include_datetime?(str))
+        end
+
+        def include_datetime_and_email_address?(str)
+          s = Mail::Sanitizer::String.remove_email_address(str)
+          Mail::Sanitizer::String.include_email_address?(str) && Mail::Sanitizer::String.include_datetime?(s)
+        end
+
         def include_datetime?(str)
           str = replace_jp_datetime(str)
           DateTime.parse(str)
