@@ -49,14 +49,18 @@ module Mail
         numrow = lines.size
 
         line_types = Array.new(numrow, :normal)
-        sign = false
+        sign_index = nil
         look_sign_symbol = false
         lines.each_with_index.reverse_each do |line, i|
           if line =~ Mail::Sanitizer::Constant::QUOT_SYMBOL_PATTERN
             line_types[i] = :quot
           elsif line =~ Mail::Sanitizer::Constant::SIGN_PATTERN
-            line_types[i] = :sign
-            sign = !sign
+            if sign_index.nil?
+              sign_index = i
+            else
+              line_types[i, sign_index - i + 1] = Array.new(sign_index - i + 1, :sign)
+              sign_index = nil
+            end
           elsif line =~ Mail::Sanitizer::Constant::SIGN_SYMBOL_PATTERN
             next if look_sign_symbol
             if line_types[i..-1].include?(:quot)
@@ -68,8 +72,6 @@ module Mail
             look_sign_symbol = true
           elsif line =~ /^[[:space:]]*$/
             line_types[i] = nil
-          elsif sign
-            line_types[i] = :sign
           end
         end
 

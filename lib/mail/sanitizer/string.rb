@@ -17,7 +17,7 @@ module Mail
 
       class << self
         def split_line(str)
-          str.split(/[\r\n]/)
+          str.split(/\r\n|\r|\n/)
         end
 
         def downcase(str)
