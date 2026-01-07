@@ -54,7 +54,7 @@ module Mail
         def replace_jp_datetime(str)
           return nil if str.nil? || str == ''
           fstr = str.dup
-          PATTERNS.each { |pattern| fstr.gsub!(pattern[0], pattern[1]) }
+          PATTERNS.each { |pattern| fstr = fstr.gsub(pattern[0], pattern[1]) }
           fstr
         end
       end
