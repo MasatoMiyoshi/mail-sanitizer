@@ -1,0 +1,99 @@
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  TargetRubyVersion: 3.0
+  NewCops: enable
+  SuggestExtensions: false
+  Exclude:
+    - 'bin/**/*'
+    - 'log/**/*'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
+
+# Gemspec
+Gemspec/DevelopmentDependencies:
+  Enabled: false
+
+Gemspec/OrderedDependencies:
+  Enabled: false
+
+Gemspec/RequireMFA:
+  Enabled: false
+
+# Layout
+Layout/EmptyLineAfterGuardClause:
+  Enabled: false
+
+Layout/EmptyLineAfterMagicComment:
+  Enabled: false
+
+# Metrics
+Metrics/AbcSize:
+  Max: 35
+
+Metrics/BlockLength:
+  Max: 50
+  Exclude:
+    - 'spec/**/*'
+
+Metrics/ClassLength:
+  Max: 300
+
+Metrics/CyclomaticComplexity:
+  Max: 15
+
+Metrics/MethodLength:
+  Max: 30
+
+Metrics/ModuleLength:
+  Max: 300
+
+Metrics/PerceivedComplexity:
+  Max: 20
+
+# Style
+Style/AccessorGrouping:
+  Enabled: false
+
+Style/ConditionalAssignment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/Encoding:
+  Exclude:
+    - '*.gemspec'
+
+Style/ExpandPathArguments:
+  Exclude:
+    - '*.gemspec'
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/HashSyntax:
+  EnforcedShorthandSyntax: never
+  Exclude:
+    - 'Rakefile'
+
+Style/MutableConstant:
+  Enabled: false
+
+Style/Next:
+  Enabled: false
+
+Style/PercentLiteralDelimiters:
+  Enabled: false
+
+Style/RedundantPercentQ:
+  Enabled: false
+
+Style/RescueStandardError:
+  Enabled: false
+
+Style/SlicingWithRange:
+  Enabled: false
+
+Style/StringLiterals:
+  Enabled: false
