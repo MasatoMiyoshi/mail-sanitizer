@@ -34,7 +34,7 @@ Thanks.
 
 ## Dependencies
 
-- ruby 2.3+
+- ruby 3.0+
 
 ## Installation
 
