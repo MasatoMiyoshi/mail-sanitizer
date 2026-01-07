@@ -1,11 +1,11 @@
 RSpec.shared_examples_for 'sanitizing bodies' do |num|
   it 'checks sanitized bodies' do
-    for i in 1..num do
+    (1..num).each do |i|
       dir = "example#{i.to_s.rjust(3, '0')}"
-      c_body = File.open("#{fixture_dir}/#{dir}/body.txt").read
-      c_sntz = File.open("#{fixture_dir}/#{dir}/sanitized.txt").read
-      c_quot = File.open("#{fixture_dir}/#{dir}/quot.txt").read
-      c_sign = File.open("#{fixture_dir}/#{dir}/sign.txt").read
+      c_body = File.read("#{fixture_dir}/#{dir}/body.txt")
+      c_sntz = File.read("#{fixture_dir}/#{dir}/sanitized.txt")
+      c_quot = File.read("#{fixture_dir}/#{dir}/quot.txt")
+      c_sign = File.read("#{fixture_dir}/#{dir}/sign.txt")
       s    = Mail::Sanitizer::Sanitizer.new(c_body)
       sntz = s.sanitize
       expect(sntz).to eq(c_sntz)

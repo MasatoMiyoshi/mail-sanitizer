@@ -1,7 +1,7 @@
 module Mail
   module Sanitizer
     class String
-      ADDRESS_REGEXP = /([a-zA-Z0-9_!#$%&`'"*+\-{|}~^\/=?\.]+@[a-zA-Z0-9][a-zA-Z0-9\.\-]+)/
+      ADDRESS_REGEXP = %r{([a-zA-Z0-9_!#$%&`'"*+\-{|}~^/=?.]+@[a-zA-Z0-9][a-zA-Z0-9.-]+)}
       SP    = "[[:space:]]"
       DIGIT = "[0-9０-９]"
       YEAR  = "(#{DIGIT}{4})#{SP}*年"
@@ -27,7 +27,7 @@ module Mail
         def quot_pattern?(str)
           s = downcase(str)
           (s =~ Mail::Sanitizer::Constant::QUOT_PATTERN) ||
-          (s =~ Mail::Sanitizer::Constant::QUOT_DATETIME_PATTERN && Mail::Sanitizer::String.include_datetime?(str))
+            (s =~ Mail::Sanitizer::Constant::QUOT_DATETIME_PATTERN && Mail::Sanitizer::String.include_datetime?(str))
         end
 
         def include_datetime_and_email_address?(str)

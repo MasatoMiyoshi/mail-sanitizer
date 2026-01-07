@@ -41,7 +41,7 @@ module Mail
           end
         end
 
-        return lines.join("\n").strip, quot_lines.join("\n").strip, sign_lines.join("\n").strip
+        [lines.join("\n").strip, quot_lines.join("\n").strip, sign_lines.join("\n").strip]
       end
 
       def split_block(str)
@@ -82,7 +82,7 @@ module Mail
             sidx = 0
             set.each do |key|
               keywords[key] = false
-              while (i + sidx) < numrow do
+              while (i + sidx) < numrow
                 downcased_line = Mail::Sanitizer::String.downcase(lines[i + sidx])
                 unless downcased_line.empty?
                   keywords[key] = true if downcased_line =~ /^#{key}/
