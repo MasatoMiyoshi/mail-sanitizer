@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "mail/sanitizer/version"
 require "mail/sanitizer/constant"
 require "mail/sanitizer/string"
